@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Sparkles, MapPin, Calendar, Clock, Crown, Heart, CheckCircle2, Users, Lock, Wand2, Music, VolumeX, Shirt, Utensils, Camera, PartyPopper, Copy } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { Sparkles, MapPin, Calendar, Crown, Heart, CheckCircle2, Wand2, Music, VolumeX, Shirt, Utensils, Camera, PartyPopper, Copy } from 'lucide-react';
 
 export default function App() {
   // Estados para el Generador Mágico (Gemini API)
@@ -21,12 +21,12 @@ export default function App() {
 
   // Efecto del ratón para el brillo interactivo
   useEffect(() => {
-    const handleMouseMove = (e) => {
+    const handleMouseMove = (e: any) => {
       setMousePos({ x: e.clientX, y: e.clientY });
     };
     window.addEventListener('mousemove', handleMouseMove);
     // Para dispositivos táctiles
-    window.addEventListener('touchmove', (e) => {
+    window.addEventListener('touchmove', (e: any) => {
       if(e.touches.length > 0) {
         setMousePos({ x: e.touches[0].clientX, y: e.touches[0].clientY });
       }
@@ -64,12 +64,12 @@ export default function App() {
 
   // Manejo de música de fondo
   const toggleAudio = () => {
-    const audio = document.getElementById('bg-music');
+    const audio = document.getElementById('bg-music') as HTMLAudioElement;
     if (audio) {
       if (isPlaying) {
         audio.pause();
       } else {
-        audio.play().catch(e => console.log("Auto-play bloqueado por el navegador", e));
+        audio.play().catch((e: any) => console.log("Auto-play bloqueado por el navegador", e));
       }
       setIsPlaying(!isPlaying);
     }
@@ -82,7 +82,7 @@ export default function App() {
     const apiKey = ""; 
     const prompt = `Actúa como un personaje mágico del mundo del pantano (estilo La Princesa y el Sapo). Escribe un deseo de feliz cumpleaños de 15 años hermoso, emotivo y corto (máximo 3 líneas) para Alexandra. El mensaje es de parte de un invitado especial, cuya relación con la cumpleañera es: "${magicPrompt}". Usa un tono cálido, un poco de magia de cuento de hadas y añade 1 o 2 emojis relevantes. No escribas saludos de carta convencionales, solo el mensaje directo.`;
 
-    const fetchWithRetry = async (retries = 5, delay = 1000) => {
+    const fetchWithRetry = async (retries = 5, delay = 1000): Promise<any> => {
       for (let i = 0; i < retries; i++) {
         try {
           const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`, {
@@ -402,7 +402,7 @@ export default function App() {
               <div className="mb-5 p-4 bg-slate-900/90 rounded-xl border border-amber-500/40 animate-fade-in shadow-lg">
                 <p className="text-sm text-amber-200 mb-3 flex items-center gap-2"><Sparkles className="w-4 h-4"/> Deja que las luciérnagas escriban por ti.</p>
                 <input 
-                  type="text" value={magicPrompt} onChange={(e) => setMagicPrompt(e.target.value)}
+                  type="text" value={magicPrompt} onChange={(e: any) => setMagicPrompt(e.target.value)}
                   placeholder="¿Qué parentesco tienes? (Ej: Su mejor amiga)"
                   className="w-full bg-slate-800 border border-emerald-500/50 rounded-xl px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-amber-400 mb-3"
                 />
@@ -416,7 +416,7 @@ export default function App() {
                 {message && (
                   <div className="relative">
                     <textarea 
-                      value={message} onChange={(e) => setMessage(e.target.value)} rows="3"
+                      value={message} onChange={(e: any) => setMessage(e.target.value)} rows={3}
                       className="w-full bg-slate-950/80 border border-amber-500/40 rounded-xl px-5 py-4 text-amber-100 focus:outline-none focus:ring-2 focus:ring-amber-400 transition-colors"
                     ></textarea>
                     <button 

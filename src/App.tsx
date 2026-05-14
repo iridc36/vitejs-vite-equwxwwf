@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import { Sparkles, MapPin, Calendar, Crown, Heart, CheckCircle2, Wand2, Music, VolumeX, Shirt, Utensils, Camera, PartyPopper, Copy } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Sparkles, MapPin, Calendar, Clock, Crown, Heart, CheckCircle2, Users, Lock, Wand2, Music, VolumeX, Shirt, Utensils, Camera, PartyPopper, Copy } from 'lucide-react';
 
 export default function App() {
   // Estados para el Generador Mágico (Gemini API)
@@ -39,8 +39,8 @@ export default function App() {
 
   // Efecto para la cuenta regresiva
   useEffect(() => {
-    // Fecha del evento: 30 de Mayo de 2026 a las 17:00 (Hora aproximada de inicio)
-    const targetDate = new Date('2026-05-30T17:00:00').getTime();
+    // Fecha del evento actualizada: 30 de Mayo de 2026 a las 18:00
+    const targetDate = new Date('2026-05-30T18:00:00').getTime();
     
     const interval = setInterval(() => {
       const now = new Date().getTime();
@@ -312,7 +312,7 @@ export default function App() {
         {/* DETALLES DEL EVENTO (Tarjetas Mágicas) */}
         <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-6 mb-16 animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
           {[
-            { icon: Calendar, title: "Cuándo", desc: "30 de Mayo", sub: "A partir de las 17:00 hrs" },
+            { icon: Calendar, title: "Cuándo", desc: "30 de Mayo", sub: "A partir de las 18:00 hrs" },
             { 
               icon: MapPin, 
               title: "Dónde", 
@@ -353,7 +353,7 @@ export default function App() {
           <div className="space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-emerald-500/50 before:to-transparent">
             
             {[
-              { time: "17:00 o 18:00", title: "Ceremonia Religiosa", desc: "Iglesia San Lázaro (Hora exacta a confirmar el lunes).", icon: Heart },
+              { time: "18:00 hrs", title: "Ceremonia Religiosa", desc: "Iglesia San Lázaro.", icon: Heart },
               { time: "19:00 hrs", title: "Recepción de Invitados", desc: "Apertura del Salón de Eventos VENEZIA y bienvenida.", icon: Camera },
               { time: "21:00 hrs", title: "Entrada Real, Brindis y Vals", desc: "Llegada de la quinceañera para el clásico vals y el brindis.", icon: Crown },
               { time: "21:30 hrs", title: "Número Sorpresa", desc: "Presentación especial de compañeros y familia.", icon: Sparkles },

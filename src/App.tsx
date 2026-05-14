@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Sparkles, MapPin, Calendar, Clock, Crown, Heart, CheckCircle2, Users, Lock, Wand2, Music, VolumeX, Shirt, Utensils, Camera, PartyPopper, Copy } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { Sparkles, MapPin, Calendar, Crown, Heart, CheckCircle2, Wand2, Music, VolumeX, Shirt, Utensils, Camera, PartyPopper, Copy } from 'lucide-react';
 
 export default function App() {
   // Estados para el Generador Mágico (Gemini API)
@@ -39,7 +39,7 @@ export default function App() {
 
   // Efecto para la cuenta regresiva
   useEffect(() => {
-    // Fecha del evento actualizada: 30 de Mayo de 2026 a las 18:00
+    // Fecha del evento: 30 de Mayo de 2026 a las 18:00
     const targetDate = new Date('2026-05-30T18:00:00').getTime();
     
     const interval = setInterval(() => {
